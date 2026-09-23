@@ -73,7 +73,7 @@ public class Main {
                 }
             }
 
-            int decimalNumber = ConverterToDecimal.convertAtoDecimal(numberA, systemB); //универсальная конвертация
+            long decimalNumber = ConverterToDecimal.convertAtoDecimal(numberA, systemB); //универсальная конвертация
             // numberA по основанию systemB в 10-ричную СС
 
             result = ConverterFromDecimal.convertFromDecimal(decimalNumber, systemC); //конвертация 10-ричной записи
