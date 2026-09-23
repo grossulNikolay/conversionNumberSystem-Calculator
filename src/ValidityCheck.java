@@ -42,24 +42,25 @@ public class ValidityCheck {
         }
 
         String literalPartB = systemB.toUpperCase(); //Симм СС с основанием от 3 до 73
-        // ДОПИСАТЬ ОГРАНИЧЕНИЕ И ЛОГИКУ 3-73 ДЛЯ ВСЕГО КОДА ПРО СИММ СС
         if (literalPartB.endsWith("C") || literalPartB.endsWith("С")) {
             String digitPartB = literalPartB.substring(0, literalPartB.length() -1);
             try {
                 int radix = Integer.parseInt(digitPartB);
 
-                if (radix >= 3 && radix % 2 == 1) {
-                    int index = numberA.length() - 1;
-                    while (index >= 0) {
-                        char ch = numberA.charAt(index);
-                        int digitValue = Character.digit(ch, 10);
-                        if (digitValue == -1 || Math.abs(digitValue) > radix / 2) {
-                            return false;
-                        }
-                        index--;
-                    }
-                    return true;
+                if (radix >= 74 || radix <= 2 || radix % 2 == 0) {
+                    return false;
                 }
+
+                int index = numberA.length() - 1;
+                while (index >= 0) {
+                    char ch = numberA.charAt(index);
+                    int digitValue = Character.digit(ch, Math.min(radix, 36)); //принудительно ограничить
+                    if (digitValue == -1 || (Math.abs(digitValue) > (radix / 2))) {
+                        return false;
+                    }
+                    index--;
+                }
+                return true;
             } catch (Exception error) {
                     return false;
             }
