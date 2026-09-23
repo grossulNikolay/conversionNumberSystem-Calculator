@@ -10,12 +10,13 @@ public class IsValidC {
         }
 
         String letterPartB = systemC.toUpperCase(); //Симм СС
-        // ДОПИСАТЬ (СМ. VALIDITY CHECK)
         if (letterPartB.endsWith("C") || letterPartB.endsWith("С")) {
             String digitPartB = letterPartB.substring(0, letterPartB.length() -1);
             try {
                 int radix = Integer.parseInt(digitPartB);
-                if (radix >= 3 && radix % 2 == 1) {
+                if (radix >= 74 || radix <= 2 || radix % 2 == 0) {
+                    return false;
+                } else {
                     return true;
                 }
             } catch (Exception error) {
